@@ -1,0 +1,21 @@
+{
+    "name": "dhiraj/yii2-facebook-accountkit",
+    "description": "Given app secret and client id, returns the user's accessToken and user information from Facebook's AccountKit Graph User API. The basic idea is to use the 'code' flow from your native Android or iOS app which is using a REST API from your Yii2 site.",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dhiraj Gupta",
+            "email": "dhiraj@traversient.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "traversient\\yii\\": ""
+        }
+    }
+}
