@@ -3,7 +3,9 @@
 namespace traversient\yii;
 use yii\base\Component;
 use yii\base\InvalidCallException;
+use yii\helpers\VarDumper;
 use yii\httpclient\Client;
+use yii\web\ServerErrorHttpException;
 
 /**
  * This is just an example.
@@ -18,10 +20,12 @@ class FacebookAccountKit extends Component
 
     public function __construct(array $config)
     {
-        parent::__construct($config);
+        parent::__construct();
         $this->myConfig = $config;
         $this->apiClient = new Client([
+            'transport' => 'yii\httpclient\CurlTransport',
             'baseUrl' => 'https://graph.accountkit.com/v1.0/',
+
             'responseConfig' => [
                 'format' => Client::FORMAT_JSON
             ],
@@ -46,9 +50,10 @@ class FacebookAccountKit extends Component
 
 
     /**
-     * Retrieve the access_token for the user authorization code provided by facebook sdk
+     * Retrieve the access_token response for the user authorization code provided
+     * by facebook accountkit sdk on native app
      * @param string $code
-     * @return string
+     * @return array
      */
     public function getAccessTokenForCode(string $code){
         $response_accesstoken = $this->apiClient->get('access_token',[
@@ -56,7 +61,24 @@ class FacebookAccountKit extends Component
             'grant_type'=>'authorization_code',
             'access_token'=>$this->app_accesstoken,
         ])->send();
-        \Yii::info('Access token response:' . $response_accesstoken);
-        return $response_accesstoken['access_token'];
+        if (! $response_accesstoken->getIsOk()){
+            $imploded = VarDumper::dumpAsString($response_accesstoken->getData());
+            throw new ServerErrorHttpException("Did not get ok response, data: {$imploded}");
+        }
+        $responseData = $response_accesstoken->getData();
+        return $responseData;
+    }
+
+    public function getUserInformation(string $accessToken){
+        $response_me = $this->apiClient->get('me',[
+            'access_token'=>$accessToken,
+            'appsecret_proof'=> hash_hmac('sha256', $accessToken, $this->myConfig['app_secret']),
+        ])->send();
+        if (! $response_me->getIsOk()){
+            $imploded = VarDumper::dumpAsString($response_me->getData());
+            throw new ServerErrorHttpException("Did not get ok response, data: {$imploded}");
+        }
+        $responseData = $response_me->getData();
+        return $responseData;
     }
 }
