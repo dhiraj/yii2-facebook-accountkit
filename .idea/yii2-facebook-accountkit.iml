@@ -15,33 +15,5 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library name="PHP">
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/vendor/bower-asset/jquery" />
-          <root url="file://$MODULE_DIR$/vendor/bower-asset/jquery.inputmask" />
-          <root url="file://$MODULE_DIR$/vendor/bower-asset/punycode" />
-          <root url="file://$MODULE_DIR$/vendor/bower-asset/yii2-pjax" />
-          <root url="file://$MODULE_DIR$/vendor/cebe/markdown" />
-          <root url="file://$MODULE_DIR$/vendor/composer" />
-          <root url="file://$MODULE_DIR$/vendor/ezyang/htmlpurifier" />
-          <root url="file://$MODULE_DIR$/vendor/yiisoft/yii2" />
-          <root url="file://$MODULE_DIR$/vendor/yiisoft/yii2-composer" />
-          <root url="file://$MODULE_DIR$/vendor/yiisoft/yii2-httpclient" />
-        </CLASSES>
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/vendor/bower-asset/jquery" />
-          <root url="file://$MODULE_DIR$/vendor/bower-asset/jquery.inputmask" />
-          <root url="file://$MODULE_DIR$/vendor/bower-asset/punycode" />
-          <root url="file://$MODULE_DIR$/vendor/bower-asset/yii2-pjax" />
-          <root url="file://$MODULE_DIR$/vendor/cebe/markdown" />
-          <root url="file://$MODULE_DIR$/vendor/composer" />
-          <root url="file://$MODULE_DIR$/vendor/ezyang/htmlpurifier" />
-          <root url="file://$MODULE_DIR$/vendor/yiisoft/yii2" />
-          <root url="file://$MODULE_DIR$/vendor/yiisoft/yii2-composer" />
-          <root url="file://$MODULE_DIR$/vendor/yiisoft/yii2-httpclient" />
-        </SOURCES>
-      </library>
-    </orderEntry>
   </component>
 </module>
